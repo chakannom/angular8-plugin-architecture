@@ -1,7 +1,9 @@
 <h1>Example of building AOT compiled plugin</h1>
+<a routerLink="/plugin1">Plugin1</a>
 <button (click)="loadPlugin('plugin2')">Load plugin2</button>
 <div>
   <div class="plugins">
     <ng-template #targetRef></ng-template>
   </div>
 </div>
+<router-outlet></router-outlet>

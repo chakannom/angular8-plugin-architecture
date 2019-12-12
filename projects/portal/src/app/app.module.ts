@@ -10,12 +10,14 @@ import { PluginLoaderService } from './services/plugin-loader/plugin-loader.serv
 import { ClientPluginLoaderService } from './services/plugin-loader/client-plugin-loader.service';
 import { PluginsConfigProvider } from './services/plugins-config.provider';
 import { TransferStateService } from './services/transfer-state.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     HttpClientModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    RouterModule.forRoot([], { enableTracing: true }),
     BrowserTransferStateModule
   ],
   providers: [
