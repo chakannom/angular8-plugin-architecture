@@ -11,9 +11,10 @@ import { ClientPluginLoaderService } from './services/plugin-loader/client-plugi
 import { PluginsConfigProvider } from './services/plugins-config.provider';
 import { TransferStateService } from './services/transfer-state.service';
 import { RouterModule } from '@angular/router';
+import { DynamicPageComponent } from './dynamic-page/dynamic-page.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DynamicPageComponent],
   imports: [
     HttpClientModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -34,6 +35,7 @@ import { RouterModule } from '@angular/router';
       deps: [PluginsConfigProvider]
     }
   ],
+  entryComponents: [DynamicPageComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

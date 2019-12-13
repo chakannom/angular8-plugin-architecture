@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { PluginLoaderService } from './services/plugin-loader/plugin-loader.service';
 import { Router, RouterModule } from '@angular/router';
+import { DynamicPageComponent } from './dynamic-page/dynamic-page.component';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,28 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // this.loadPlugin('plugin1');
     // this.loadRouter('plugin1');
-    this.createDynamic('plugin1');
+    // this.createDynamic('plugin1');
+    this.createRoute(
+      'plugin1',
+      'plugin1',
+      DynamicPageComponent,
+      'plugin1'
+    );
+  }
+
+  createRoute(
+    text: string,
+    path: string,
+    componentType: any,
+    factoryType?: any
+  ) {
+    this.router.config.unshift({
+      path: path,
+      component: componentType,
+      data: {
+        factory: factoryType
+      }
+    });
   }
 
   loadPlugin(pluginName: string) {
