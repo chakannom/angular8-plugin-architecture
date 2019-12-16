@@ -27,15 +27,15 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.loadPlugin('plugin1');
+    this.loadPlugin('plugin1');
     // this.loadRouter('plugin1');
     // this.createDynamic('plugin1');
-    this.createRoute(
-      'plugin1',
-      'plugin1',
-      DynamicPageComponent,
-      'plugin1'
-    );
+    // this.createRoute(
+    //   'plugin1',
+    //   'plugin1',
+    //   DynamicPageComponent,
+    //   'plugin1'
+    // );
   }
 
   createRoute(
@@ -60,7 +60,28 @@ export class AppComponent implements OnInit {
       const compFactory = moduleRef.componentFactoryResolver.resolveComponentFactory(
         entryComponent
       );
-      this.vcRef.createComponent(compFactory);
+      // this.vcRef.createComponent(compFactory);
+      this.createRoute(
+        'plugin1',
+        'plugin1',
+        DynamicPageComponent,
+        compFactory
+      );
+    });
+
+    this.pluginLoader.load('plugin2').then(moduleFactory => {
+      const moduleRef = moduleFactory.create(this.injector);
+      const entryComponent = (moduleFactory.moduleType as any).entry;
+      const compFactory = moduleRef.componentFactoryResolver.resolveComponentFactory(
+        entryComponent
+      );
+      // this.vcRef.createComponent(compFactory);
+      this.createRoute(
+        'plugin2',
+        'plugin1/plugin2',
+        DynamicPageComponent,
+        compFactory
+      );
     });
   }
 

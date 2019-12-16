@@ -23,7 +23,8 @@ export class DynamicPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const componentType = this.route.snapshot.data['factory'];
-    this.loadPlugin(componentType);
+    this.content.createComponent(componentType);
+    // this.loadPlugin(componentType);
   }
 
   ngOnDestroy() {
